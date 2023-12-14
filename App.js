@@ -1,11 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
+
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import Home from './Screens/Home'; 
+import fonts from './Global/fonts'; 
+import colors from './Global/colors'; 
+import ItemListCategory from './Screens/ItemListCategory';
+import { setCustomText } from 'react-native-global-props';
+
+const customTextProps = {
+  style: {
+    fontFamily: 'Epilogue-Regular', // Utiliza la fuente Epilogue-Regular
+  }
+}
+
+setCustomText(customTextProps);
 
 export default function App() {
+  const [fontsLoaded] = useFonts(fonts);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Home />
     </View>
   );
 }
@@ -13,8 +34,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.customPrimaryBackground,
   },
 });
