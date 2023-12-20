@@ -2,10 +2,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Card from './Card'
 
-const CategoryItem = ( { category } ) => {
+const CategoryItem = ( { category,navigation,route } ) => {
   return (
     <Pressable
         onPress={() => {
+            navigation.navigate('Category', {category: category})
             console.log('Category Pressed' + category)
         }}
     >

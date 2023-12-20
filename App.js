@@ -8,10 +8,11 @@ import fonts from './Global/fonts';
 import colors from './Global/colors'; 
 import ItemListCategory from './Screens/ItemListCategory';
 import { setCustomText } from 'react-native-global-props';
+import Navigator from './Navigation/TabNavigator';
 
 const customTextProps = {
   style: {
-    fontFamily: 'Epilogue-Regular', // Utiliza la fuente Epilogue-Regular
+    fontFamily: 'Epilogue-Regular', 
   }
 }
 
@@ -25,9 +26,7 @@ export default function App() {
   }
   
   return (
-    <View style={styles.container}>
-      <Home />
-    </View>
+    <Navigator />
   );
 }
 

@@ -4,12 +4,16 @@ import categories from '../Data/categories.json'
 import CategoryItem from './CategoryItem'
 import colors from '../Global/colors'
 
-const Categories = () => {
+
+const Categories = ({navigation}) => {
   return (
     <View styles= {styles.container}>
         <FlatList
             styles= {styles.list}
-            renderItem={({item}) => <CategoryItem category={item} />}
+            renderItem={({item}) => <CategoryItem 
+                category={item} 
+                navigation={navigation}
+            />}
             data={categories}
             keyExtractor={category => category}
         />

@@ -6,17 +6,21 @@ import Header from '../Components/Header';
 import Categories from '../Components/Categories'; 
 import colors from '../Global/colors'; 
 
-export default function Home() {
+const Home = ({navigation, route}) => {
     return (
         <View style={styles.container}>
-            <Header title="Switch y elementos externos" />
             <View style={styles.categoriesContainer}>
-                <Categories/>
+                <Categories 
+                    navigation={navigation}
+                    route={route}
+                />
             </View>
             <StatusBar style="auto" />
         </View>
     );
 }
+
+export default Home;
 
 const styles = StyleSheet.create({
     container: {

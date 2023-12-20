@@ -9,11 +9,11 @@ import colors from '../Global/colors';
 import allProducts from '../Data/products.json';
 import ProductItem from '../Components/ProductItem'
 
-const ItemListCategory = ({category}) => {
+const ItemListCategory = ({navigation, route}) => {
+    const {category} = route.params;
+    const [keyword, setKeyword] = useState("");
+    const [products, setProducts] = useState(allProducts);
     
-    const [products, setProducts] = useState([]);
-    const [keyword, setKeyword] = useState('');
-
     useEffect(() => {
         if (category){
             const products = allProducts.filter(product => product.category === category);
@@ -23,11 +23,10 @@ const ItemListCategory = ({category}) => {
             const productsfiltered = allProducts.filter(product => product.title.includes(keyword));
             setProducts(productsfiltered);
         }
-    }, [category, keyword]);
+    }, [keyword]);
 
     return (
         <>
-            <Header title="Categorías ||  Productos" />
             <Search onSearch={setKeyword} />
             <View style={styles.container}>
                 <FlatList
